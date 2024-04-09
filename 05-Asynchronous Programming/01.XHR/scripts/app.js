@@ -9,5 +9,4 @@ function loadRepos() {
       });
       httpRequest.open("GET", url);
       httpRequest.send();
-
 }
