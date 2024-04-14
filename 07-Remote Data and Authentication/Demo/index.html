@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Data</title>
+    <style>
+        table, tr, th, td{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        td, th{
+            padding: 4px 8px;
+        }
+        #editor_edit{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<section id="index">
+    <h1 id="email"></h1>
+<h2>Part Index</h2>
+    <button id="loadParts">Load Parts</button>
+    <table>
+        <thead>
+        <tr><th>Part ID</th>
+            <th>Label</th>
+            <th>Price</th>
+            <th>Available Quantity</th>
+            <th>Control</th>
+        </tr>
+        </thead>
+        <tbody id="table_body">
+        </tbody>
+    </table>
+</section>
+    <form id="editor_create">
+        <h2>New Part</h2>
+        <div>
+            <span>Label</span>
+            <input type="text" name="label">
+        </div>
+        <div>
+            <span>Price</span>
+            <input type="number" name="price">
+        </div>
+        <div>
+            <span>Part quantity</span>
+            <input type="number" name="qty">
+        </div>
+        <div>
+            <button>Create Part</button>
+        </div>
+    </form>
+
+<section id="editor_edit">
+    <h2>Edit part</h2>
+    <input type="hidden" id="edit_part_id">
+    <div>
+        <span>Label</span>
+        <input type="text" id="edit_part_label">
+    </div>
+    <div>
+        <span>Price</span>
+        <input type="number" id="edit_part_price">
+    </div>
+    <div>
+        <span>Part quantity</span>
+        <input type="number" id="edit_part_qty">
+    </div>
+    <div>
+        <button id="save_btn">Save part</button>
+        <button id="cancel_btn">Cancel</button>
+    </div>
+</section>
+
+    <script src ="app.js"> </script>
+</body>
+</html>
