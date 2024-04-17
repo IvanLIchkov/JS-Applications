@@ -13,14 +13,14 @@
     class ServiceError extends Error {
         constructor(message = 'Service Error') {
             super(message);
-            this.name = 'ServiceError'; 
+            this.name = 'ServiceError';
         }
     }
 
     class NotFoundError extends ServiceError {
         constructor(message = 'Resource not found') {
             super(message);
-            this.name = 'NotFoundError'; 
+            this.name = 'NotFoundError';
             this.status = 404;
         }
     }
@@ -28,7 +28,7 @@
     class RequestError extends ServiceError {
         constructor(message = 'Request error') {
             super(message);
-            this.name = 'RequestError'; 
+            this.name = 'RequestError';
             this.status = 400;
         }
     }
@@ -36,7 +36,7 @@
     class ConflictError extends ServiceError {
         constructor(message = 'Resource conflict') {
             super(message);
-            this.name = 'ConflictError'; 
+            this.name = 'ConflictError';
             this.status = 409;
         }
     }
@@ -44,7 +44,7 @@
     class AuthorizationError extends ServiceError {
         constructor(message = 'Unauthorized') {
             super(message);
-            this.name = 'AuthorizationError'; 
+            this.name = 'AuthorizationError';
             this.status = 401;
         }
     }
@@ -52,7 +52,7 @@
     class CredentialError extends ServiceError {
         constructor(message = 'Forbidden') {
             super(message);
-            this.name = 'CredentialError'; 
+            this.name = 'CredentialError';
             this.status = 403;
         }
     }
@@ -556,7 +556,7 @@
             if (query.pageSize) {
                 responseData = responseData.slice(0, pageSize);
             }
-    		
+
     		if (query.distinct) {
                 const props = query.distinct.split(',').filter(p => p != '');
                 responseData = Object.values(responseData.reduce((distinct, c) => {
@@ -832,7 +832,7 @@
     function createInstance(seedData = {}) {
         const collections = new Map();
 
-        // Initialize seed data from file    
+        // Initialize seed data from file
         for (let collectionName in seedData) {
             if (seedData.hasOwnProperty(collectionName)) {
                 const collection = new Map();
@@ -1285,7 +1285,7 @@
                     propRules = ruleOrDefault(propRules, getPropRule(allPropRules, action));
                 }
 
-                // Rules by record id 
+                // Rules by record id
                 const recordRules = collectionRules[data._id];
                 if (recordRules !== undefined) {
                     currentRule = ruleOrDefault(currentRule, recordRules[action]);
@@ -1642,8 +1642,35 @@
     			_createdOn: 1616237272948,
     			_updatedOn: 1616237293676
     		}
-    	}
-    };
+    	},
+        autoparts: {
+        "3c71bacb-06c4-45fe-8f96-c97452bc0407": {
+            _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+            "label": "Side Mirror, Left",
+            "price": 49,
+            "qty": 5,
+            _createdOn: 1616236790262,
+            _updatedOn: 1616236792930
+        },
+        "22fa30f9-3d7f-4f51-9a5a-889d9518ee6b": {
+            _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+            "label": "Wiper Fluid",
+            "price": 15,
+            "qty": 56,
+            _createdOn: 1616236790262,
+            _updatedOn: 1616236792930
+        },
+        "dfd87078-d3cd-455a-85f2-d932c8e5aacf": {
+            _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+            "label": "Brake Disk",
+            "price": 80,
+            "qty": 22,
+            _createdOn: 1616236790262,
+            _updatedOn: 1616236792930
+        }
+    }
+};
+
     var rules$1 = {
     	users: {
     		".create": false,
