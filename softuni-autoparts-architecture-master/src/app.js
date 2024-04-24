@@ -11,14 +11,14 @@ const views = {
 };
 
 document.querySelector('nav').addEventListener('click', (event) => {
-    if (event.target.tagName == 'A') {
+    if (event.target.tagName === 'A') {
         const id = event.target.id;
         showView(id);
     }
 });
 
 document.getElementById('table').addEventListener('click', (event) => {
-    if (event.target.tagName == 'A') {
+    if (event.target.tagName === 'A') {
         const id = event.target.dataset.id;
         showDetails(id);
     }
