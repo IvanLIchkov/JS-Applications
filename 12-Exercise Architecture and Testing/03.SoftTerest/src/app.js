@@ -1,16 +1,17 @@
 import {showHome} from "./home.js";
 import {showDashboard} from "./dashboard.js";
 import {showCreateIdea} from "./create-idea.js";
-import {showLogin, logout} from "./login.js";
+import {showLogin, onLogout} from "./login.js";
 import {showRegister} from "./register.js";
 
 export const main = document.querySelector('main');
 main.innerHTML = '';
 
+
 const views = {
     'Dashboard': showDashboard,
     'Create': showCreateIdea,
-    'Logout': logout,
+    'Logout': onLogout,
     'Login': showLogin,
     'Register': showRegister,
     'Home': showHome

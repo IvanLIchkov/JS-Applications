@@ -1,6 +1,6 @@
 import {main} from "./app.js";
 import {addFormSubmit} from "./util/addFormSubmit.js";
-import {login} from "./data/auth.js";
+import {login, logOut} from "./data/auth.js";
 
 const loginContainer = document.querySelector(".login-container");
 
@@ -27,7 +27,7 @@ async function onLogin({email, password}){
      loginForm.reset();
 }
 
-export function logout(){
-    sessionStorage.clear();
-    context.showView('Home')
+export async function onLogout(){
+   await logOut();
+   context.showView('Home')
 }
