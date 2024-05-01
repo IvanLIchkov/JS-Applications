@@ -1,27 +1,44 @@
 import { getParts } from './data/data.js';
-
-const catalogSection = document.getElementById('catalog');
-const table = catalogSection.querySelector('#table');
-const loading = document.createElement('p');
-loading.innerHTML = 'Loading &hellip;';
+import {html} from '/node_modules/lit-html/lit-html.js'
+import {repeat} from '../node_modules/lit-html/directives/repeat.js'
 
 
-export async function showCatalog() {
-    document.querySelector('main').replaceChildren(catalogSection);
 
-    table.replaceChildren(loading);
+// const loading = document.createElement('p');
+// loading.innerHTML = 'Loading &hellip;';
+
+const catalogTemplate = (record) => html`
+	<section id="catalog">
+		<h2>Catalog</h2>
+		
+        ${record === undefined 
+                ? html`<p>Loading</p>` 
+                : html `<table>
+			    <thead>
+			        <tr>
+				        <th>Label</th>
+				        <th>Unit Price</th>
+				        <th>Controls</th>
+			         </tr>
+			    </thead>
+			            <tbody id="table">
+			                 ${record.map(productTemplate)}
+                        </tbody>
+		            </table>`
+        }
+	</section>`
+
+export async function showCatalog(context) {
+    context.render(catalogTemplate([]))
 
     const parts = await getParts();
-    table.replaceChildren(...parts.map(createRow));
+
+    context.render(catalogTemplate(parts));
 }
 
-function createRow(record) {
-    const element = document.createElement('tr');
-
-    element.innerHTML = `
-    <td>${record.label}</td>
-    <td>€ ${record.price}</td>
-    <td><a href="javascript:void(0)" data-id="${record._id}">Details</a></td>`;
-
-    return element;
-}
+const productTemplate = (record) => html`
+    <tr>
+	    <td>${record.label}</td>
+	    <td>${record.price}</td>
+	    <td><a href="javascript:void(0)" data-id="${record.id}">Details</a></td>
+    </tr>`;

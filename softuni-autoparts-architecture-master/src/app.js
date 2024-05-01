@@ -2,6 +2,7 @@ import { showHome } from './home.js';
 import { showCatalog } from './catalog.js';
 import { showLogin } from './login.js';
 import { showDetails } from './details.js';
+import { render} from '/node_modules/lit-html/lit-html.js'
 
 
 const views = {
@@ -9,6 +10,8 @@ const views = {
     'catalog-link': showCatalog,
     'login-link': showLogin
 };
+
+const main = document.querySelector('main');
 
 document.querySelector('nav').addEventListener('click', (event) => {
     if (event.target.tagName === 'A') {
@@ -28,7 +31,8 @@ document.getElementById('table').addEventListener('click', (event) => {
 document.getElementById('views').remove();
 
 const ctx = {
-    showView
+    showView,
+    render: renderView
 };
 
 // Start application in home view
@@ -40,4 +44,8 @@ function showView(name) {
     if (typeof view == 'function') {
         view(ctx);
     }
+}
+
+function renderView(content) {
+    render(content, main)
 }
